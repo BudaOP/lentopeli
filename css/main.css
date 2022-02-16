@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&family=Rock+Salt&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.container > header,
+footer {
+  line-height: 5rem;
+  display: flex;
+  justify-content: space-around;
+  background-color: #000;
+  color: #fff;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.container header h1,
+footer p {
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  box-sizing: border-box;
+  padding: 1rem 2rem;
+}
+
+#map {
+  box-sizing: border-box;
+  width: 60%;
+  height: calc(100vh - 12rem);
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.boxes {
+  width: 40%;
+  box-sizing: border-box;
+  height: calc(100vh - 12rem);
+}
+
+.box {
+  display: flex;
+  box-sizing: border-box;
+  flex-flow: column;
+  justify-content: space-around;
+  background-color: rgb(255, 255, 255);
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  height: calc(70% - 1rem);
+  margin: 0 1rem 1rem 0;
+  overflow: hidden;
+}
+
+.box:last-child {
+  height: 30%;
+}
+
+.box h2,
+.box h5,
+.box figure,
+.box p {
+  margin: 0;
+  padding: 0;
+}
+
+.box p {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+}
+
+.box button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0.4rem 0;
+}
+
+.box table {
+  text-align: center;
+  border: #ccc solid 1px;
+  border-radius: 4px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  padding: 1rem;
+  border: #ccc solid 1px;
+  margin: 3px;
+  border-radius: 4px;
+}
+
+.leima {
+  font-family: 'Rock Salt', cursive;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  z-index: 3;
+  background-image: url('../img/splatter.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding: 9rem 7rem;
+  text-align: center;
+  line-height: 1rem;
+  filter: drop-shadow(0 0 30px #333);
+  transform: rotate(340deg);
+}
+
+.leima h2,
+.leima p {
+  margin: 0.5rem;
+}
+.leima img {
+  margin: -1.5rem;
+}
+
+.hide {
+  display: none;
+}
+
+ul {
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+li {
+  width: 40%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+/* leaflet ikonit */
+.sininen-ikoni {
+  background: #2474ff;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 30px;
+}
+
+.vihrea-ikoni {
+  background: #27ba35;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 30px;
+}
+
+.harmaa-ikoni {
+  background: #484848;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  font-weight: bold;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 30px;
+}

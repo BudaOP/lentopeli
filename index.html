@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lentopeli</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <ion-icon name="airplane-outline"></ion-icon>
+            </div>
+            <h1>
+                Lentopeli
+            </h1>
+            <div class="logo">
+                <ion-icon name="airplane-outline"></ion-icon>
+            </div>
+        </header>
+        <main>
+            <div class="boxes">
+                <section class="box">
+                    <header>
+                        <h2>Matkapassi</h2>
+                    </header>
+                    <ul id="goals">
+
+                    </ul>
+                    <p>
+                        <span>Rahaa:&nbsp;1234€</span>
+                        <span>Bensaa:&nbsp;123l</span>
+                    </p>
+                </section>
+                <section class="box">
+                    <header>
+                        <h2 id="selected-name"></h2>
+                    </header>
+                    <table>
+                        <tr>
+                            <td>Lämpötila</td>
+                            <td>
+                                <img id="selected-icon" src="" alt="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="selected-temp"></td>
+                            <td id="selected-weather"></td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+            <div id="map"></div>
+        </main>
+        <footer>
+            <p>©ILE</p>
+        </footer>
+        <div class="leima hide">
+            <h2>Sait leiman</h2>
+            <p>
+                <img src="http://openweathermap.org/img/wn/13d@2x.png" alt="leima">
+                <br>
+                Lumisade
+            </p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
