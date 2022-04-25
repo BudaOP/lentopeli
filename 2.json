@@ -1,0 +1,239 @@
+{
+  "status": {
+    "id": "wWKmYfiWWGx2Op8k8MHl",
+    "name": "Anna",
+    "co2": {
+      "consumed": 0,
+      "budget": 10000
+    },
+    "previous_location": "EFKE"
+  },
+  "location": [
+    {
+      "ident": "EFHL",
+      "active": true,
+      "name": "Hailuoto Airfield",
+      "latitude": 64.969553,
+      "longitude": 24.704218,
+      "weather": {
+        "main": "Snow",
+        "description": "light snow",
+        "icon": "https://openweathermap.org/img/wn/13n.png",
+        "temp": -2,
+        "humidity": 96,
+        "wind": {
+          "speed": 8.32,
+          "deg": 36
+        },
+        "meets_goals": []
+      }
+    },
+    {
+      "ident": "EFAH",
+      "active": false,
+      "name": "Ahmosuo Airport",
+      "latitude": 64.895302,
+      "longitude": 25.752199,
+      "distance": 50,
+      "co2_consumption": 100
+    },
+    {
+      "ident": "EFHO",
+      "active": false,
+      "name": "Oulun University Hospital Heliport",
+      "latitude": 65.003609,
+      "longitude": 25.520279,
+      "distance": 38,
+      "co2_consumption": 88
+    },
+    {
+      "ident": "EFHP",
+      "active": false,
+      "name": "Haapavesi Airfield",
+      "latitude": 64.113098,
+      "longitude": 25.5042,
+      "distance": 102,
+      "co2_consumption": 152
+    },
+    {
+      "ident": "EFKE",
+      "active": false,
+      "name": "Kemi-Tornio Airport",
+      "latitude": 65.778701782227,
+      "longitude": 24.582099914551,
+      "distance": 90,
+      "co2_consumption": 140
+    },
+    {
+      "ident": "EFKN",
+      "active": false,
+      "name": "Kannus Airfield",
+      "latitude": 63.920601,
+      "longitude": 24.0867,
+      "distance": 120,
+      "co2_consumption": 170
+    },
+    {
+      "ident": "EFKO",
+      "active": false,
+      "name": "Kalajoki Airfield",
+      "latitude": 64.2286,
+      "longitude": 23.826401,
+      "distance": 92,
+      "co2_consumption": 142
+    },
+    {
+      "ident": "EFKR",
+      "active": false,
+      "name": "Kärsämäki Airport",
+      "latitude": 63.989201,
+      "longitude": 25.743601,
+      "distance": 120,
+      "co2_consumption": 170
+    },
+    {
+      "ident": "EFML",
+      "active": false,
+      "name": "Ii Airfield",
+      "latitude": 65.301144,
+      "longitude": 25.416226,
+      "distance": 49,
+      "co2_consumption": 99
+    },
+    {
+      "ident": "EFOU",
+      "active": false,
+      "name": "Oulu Airport",
+      "latitude": 64.930099,
+      "longitude": 25.354601,
+      "distance": 31,
+      "co2_consumption": 81
+    },
+    {
+      "ident": "EFPU",
+      "active": false,
+      "name": "Pudasjärvi Airfield",
+      "latitude": 65.402199,
+      "longitude": 26.946899,
+      "distance": 115,
+      "co2_consumption": 165
+    },
+    {
+      "ident": "EFRH",
+      "active": false,
+      "name": "Raahe Pattijoki Airfield",
+      "latitude": 64.688103,
+      "longitude": 24.695801,
+      "distance": 31,
+      "co2_consumption": 81
+    },
+    {
+      "ident": "EFVL",
+      "active": false,
+      "name": "Vaala Airfield",
+      "latitude": 64.5019,
+      "longitude": 26.76,
+      "distance": 110,
+      "co2_consumption": 160
+    },
+    {
+      "ident": "EFYL",
+      "active": false,
+      "name": "Ylivieska Airfield",
+      "latitude": 64.054722,
+      "longitude": 24.725278,
+      "distance": 101,
+      "co2_consumption": 151
+    }
+  ],
+  "goals": [
+    {
+      "goalid": 1,
+      "name": "HOT",
+      "description": "Temperature over +25C",
+      "icon": "https://openweathermap.org/img/wn/01d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": 25,
+      "target_maxvalue": 9999,
+      "target_text": ""
+    },
+    {
+      "goalid": 2,
+      "name": "COLD",
+      "description": "Temperature under -20C",
+      "icon": "https://openweathermap.org/img/wn/13d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": -9999,
+      "target_maxvalue": -20,
+      "target_text": ""
+    },
+    {
+      "goalid": 3,
+      "name": "0DEG",
+      "description": "Temperature exactly 0C",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": -0.5,
+      "target_maxvalue": 0.5,
+      "target_text": ""
+    },
+    {
+      "goalid": 4,
+      "name": "10DEG",
+      "description": "Temperature exactly +10C",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": 9.5,
+      "target_maxvalue": 10.5,
+      "target_text": ""
+    },
+    {
+      "goalid": 5,
+      "name": "20DEG",
+      "description": "Temperature exactly +20C",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": 19.5,
+      "target_maxvalue": 20.5,
+      "target_text": ""
+    },
+    {
+      "goalid": 6,
+      "name": "CLEAR",
+      "description": "Clear skies",
+      "icon": "https://openweathermap.org/img/wn/01d.png",
+      "reached": false,
+      "target": "WEATHER",
+      "target_minvalue": 0,
+      "target_maxvalue": 0,
+      "target_text": "Clear"
+    },
+    {
+      "goalid": 7,
+      "name": "CLOUDS",
+      "description": "Cloudy",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": false,
+      "target": "WEATHER",
+      "target_minvalue": 0,
+      "target_maxvalue": 0,
+      "target_text": "Clouds"
+    },
+    {
+      "goalid": 8,
+      "name": "WINDY",
+      "description": "Wind blows more than 10 m/s",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": false,
+      "target": "WIND",
+      "target_minvalue": 10,
+      "target_maxvalue": 9999,
+      "target_text": ""
+    }
+  ]
+}

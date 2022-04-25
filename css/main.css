@@ -6,6 +6,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Merriweather Sans', sans-serif;
+  scroll-behavior: smooth;
+  min-height: 100%;
 }
 
 .container {
@@ -38,38 +40,31 @@ main {
   justify-content: space-around;
   box-sizing: border-box;
   padding: 1rem 2rem;
+  height: 100%;
 }
 
 #map {
-  box-sizing: border-box;
-  width: 60%;
-  height: calc(100vh - 12rem);
+  width: 100%;
+  height: 40vh;
   border-radius: 6px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 1rem;
 }
 
 .boxes {
-  width: 40%;
+  width: 100%;
   box-sizing: border-box;
-  height: calc(100vh - 12rem);
+  font-size: x-small;
 }
 
 .box {
   display: flex;
-  box-sizing: border-box;
   flex-flow: column;
-  justify-content: space-around;
   background-color: rgb(255, 255, 255);
   padding: 1rem;
   border-radius: 6px;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-  height: calc(70% - 1rem);
-  margin: 0 1rem 1rem 0;
-  overflow: hidden;
-}
-
-.box:last-child {
-  height: 30%;
+  margin-bottom: 1rem;
 }
 
 .box h2,
@@ -105,21 +100,32 @@ ul {
   list-style-type: none;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  box-sizing: border-box;
 }
 
 li {
-  padding: 1rem;
+  width: calc(50% - 0.6rem);
+  box-sizing: border-box;
+  text-align: center;
+  padding: 0.3rem;
+  margin: 0.3rem;
   border: #ccc solid 1px;
-  margin: 3px;
   border-radius: 4px;
+  overflow-wrap: break-word;
+}
+
+li figure img,
+#weather img {
+  height: 2rem;
 }
 
 .leima {
   font-family: 'Rock Salt', cursive;
   position: absolute;
-  top: 10%;
-  left: 10%;
-  z-index: 3;
+  bottom: 30%;
+  left: 0;
+  z-index: 999;
   background-image: url('../img/splatter.png');
   background-repeat: no-repeat;
   background-size: contain;
@@ -128,6 +134,7 @@ li {
   line-height: 1rem;
   filter: drop-shadow(0 0 30px #333);
   transform: rotate(340deg);
+  box-sizing: border-box;
 }
 
 .leima h2,
@@ -142,15 +149,17 @@ li {
   display: none;
 }
 
-ul {
-  flex-wrap: wrap;
-  box-sizing: border-box;
+#weather {
+  border-spacing: 0;
 }
-li {
-  width: 40%;
-  box-sizing: border-box;
-  text-align: center;
-  padding: 0.5rem;
+
+#weather td {
+  padding: 0.3rem;
+}
+
+#weather td:first-child,
+#weather td:nth-child(even) {
+  border-right: #ccc 1px solid;
 }
 
 /* leaflet ikonit */
@@ -179,4 +188,25 @@ li {
   text-align: center;
   border-radius: 50%;
   line-height: 30px;
+}
+
+.done {
+  background-color: #484848;
+}
+
+@media screen and (min-width: 769px) {
+  .boxes {
+    font-size: initial;
+  }
+
+  #map {
+    width: 40%;
+    height: initial;
+  }
+
+  .boxes {
+    width: 60%;
+    padding-left: 1rem;
+    box-sizing: border-box;
+  }
 }

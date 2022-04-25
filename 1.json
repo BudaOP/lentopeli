@@ -1,0 +1,214 @@
+{
+  "status": {
+    "id": "Yv12zc89l1PWCeufiOZy",
+    "name": "Vesa",
+    "co2": {
+      "consumed": 0,
+      "budget": 10000
+    },
+    "previous_location": "LEPA"
+  },
+  "location": [
+    {
+      "ident": "LENB",
+      "active": true,
+      "name": "Cala'n Blanes Heliport",
+      "latitude": 39.99750137329102,
+      "longitude": 3.81332993507385,
+      "weather": {
+        "main": "Clear",
+        "description": "clear sky",
+        "icon": "https://openweathermap.org/img/wn/01n.png",
+        "temp": 14,
+        "humidity": 83,
+        "wind": {
+          "speed": 2.62,
+          "deg": 292
+        },
+        "meets_goals": [
+          6
+        ]
+      }
+    },
+    {
+      "ident": "ES-0057",
+      "active": false,
+      "name": "Ses Salines (S’Olivó) Airfield",
+      "latitude": 39.346746,
+      "longitude": 3.057199,
+      "distance": 97,
+      "co2_consumption": 147
+    },
+    {
+      "ident": "ES-0058",
+      "active": false,
+      "name": "Vilafranca de Bonany-Es cruce Airfield (Aerodromo Mallorca)",
+      "latitude": 39.576801,
+      "longitude": 3.124647,
+      "distance": 75,
+      "co2_consumption": 125
+    },
+    {
+      "ident": "ES-0059",
+      "active": false,
+      "name": "Aeródrom de Binissalem",
+      "latitude": 39.681743,
+      "longitude": 2.878053,
+      "distance": 87,
+      "co2_consumption": 137
+    },
+    {
+      "ident": "ES-0060",
+      "active": false,
+      "name": "Pollensa Sea Plane Base",
+      "latitude": 39.908121,
+      "longitude": 3.101912,
+      "distance": 61,
+      "co2_consumption": 111
+    },
+    {
+      "ident": "ES-0061",
+      "active": false,
+      "name": "Aeródromo de Son Albertí (Llucmajor)",
+      "latitude": 39.401399,
+      "longitude": 2.859095,
+      "distance": 105,
+      "co2_consumption": 155
+    },
+    {
+      "ident": "ES-0294",
+      "active": false,
+      "name": "Portocristo Airstrip",
+      "latitude": 39.55833,
+      "longitude": 3.32024,
+      "distance": 64,
+      "co2_consumption": 114
+    },
+    {
+      "ident": "LEMH",
+      "active": false,
+      "name": "Menorca Airport",
+      "latitude": 39.862598,
+      "longitude": 4.21865,
+      "distance": 37,
+      "co2_consumption": 87
+    },
+    {
+      "ident": "LEPA",
+      "active": false,
+      "name": "Palma de Mallorca Airport",
+      "latitude": 39.551701,
+      "longitude": 2.73881,
+      "distance": 104,
+      "co2_consumption": 154
+    },
+    {
+      "ident": "LESB",
+      "active": false,
+      "name": "Son Bonet Airport",
+      "latitude": 39.5989,
+      "longitude": 2.70278,
+      "distance": 104,
+      "co2_consumption": 154
+    },
+    {
+      "ident": "LESL",
+      "active": false,
+      "name": "San Luis Airport",
+      "latitude": 39.86220169067383,
+      "longitude": 4.25832986831665,
+      "distance": 40,
+      "co2_consumption": 90
+    }
+  ],
+  "goals": [
+    {
+      "goalid": 1,
+      "name": "HOT",
+      "description": "Temperature over +25C",
+      "icon": "https://openweathermap.org/img/wn/01d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": 25,
+      "target_maxvalue": 9999,
+      "target_text": ""
+    },
+    {
+      "goalid": 2,
+      "name": "COLD",
+      "description": "Temperature under -20C",
+      "icon": "https://openweathermap.org/img/wn/13d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": -9999,
+      "target_maxvalue": -20,
+      "target_text": ""
+    },
+    {
+      "goalid": 3,
+      "name": "0DEG",
+      "description": "Temperature exactly 0C",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": -0.5,
+      "target_maxvalue": 0.5,
+      "target_text": ""
+    },
+    {
+      "goalid": 4,
+      "name": "10DEG",
+      "description": "Temperature exactly +10C",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": 9.5,
+      "target_maxvalue": 10.5,
+      "target_text": ""
+    },
+    {
+      "goalid": 5,
+      "name": "20DEG",
+      "description": "Temperature exactly +20C",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": false,
+      "target": "TEMP",
+      "target_minvalue": 19.5,
+      "target_maxvalue": 20.5,
+      "target_text": ""
+    },
+    {
+      "goalid": 6,
+      "name": "CLEAR",
+      "description": "Clear skies",
+      "icon": "https://openweathermap.org/img/wn/01d.png",
+      "reached": true,
+      "target": "WEATHER",
+      "target_minvalue": 0,
+      "target_maxvalue": 0,
+      "target_text": "Clear"
+    },
+    {
+      "goalid": 7,
+      "name": "CLOUDS",
+      "description": "Cloudy",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": true,
+      "target": "WEATHER",
+      "target_minvalue": 0,
+      "target_maxvalue": 0,
+      "target_text": "Clouds"
+    },
+    {
+      "goalid": 8,
+      "name": "WINDY",
+      "description": "Wind blows more than 10 m/s",
+      "icon": "https://openweathermap.org/img/wn/04d.png",
+      "reached": false,
+      "target": "WIND",
+      "target_minvalue": 10,
+      "target_maxvalue": 9999,
+      "target_text": ""
+    }
+  ]
+}

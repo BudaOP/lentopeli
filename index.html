@@ -17,55 +17,67 @@
                 <ion-icon name="airplane-outline"></ion-icon>
             </div>
             <h1>
-                Lentopeli
+                Top Gun
             </h1>
             <div class="logo">
                 <ion-icon name="airplane-outline"></ion-icon>
             </div>
         </header>
         <main>
+            <div id="map"></div>
             <div class="boxes">
-                <section class="box">
-                    <header>
-                        <h2>Matkapassi</h2>
-                    </header>
-                    <ul id="goals">
-
-                    </ul>
-                    <p>
-                        <span>Rahaa:&nbsp;1234€</span>
-                        <span>Bensaa:&nbsp;123l</span>
-                    </p>
-                </section>
                 <section class="box">
                     <header>
                         <h2 id="selected-name"></h2>
                     </header>
-                    <table>
+                    <table id="weather">
                         <tr>
-                            <td>Lämpötila</td>
+                            <td>Temperature</td>
                             <td>
                                 <img id="selected-icon" src="" alt="">
                             </td>
+                            <td>Wind</td>
                         </tr>
                         <tr>
                             <td id="selected-temp"></td>
                             <td id="selected-weather"></td>
+                            <td id="selected-wind"></td>
                         </tr>
                     </table>
                 </section>
+                <section class="box">
+                    <header>
+                        <h2>Game status</h2>
+                    </header>
+                    <table id="status">
+                        <tr>
+                            <td colspan="2">
+                                <h3 id="player">Name</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CO2 Consumed : <span id="consumed">0</span>kg</td>
+                            <td>CO2 Budget: <span id="budget">10000</span>kg</td>
+                        </tr>
+                    </table>
+                </section>
+                <section class="box">
+                    <header>
+                        <h2>Goals</h2>
+                    </header>
+                    <ul id="goals">
+
+                    </ul>
+                </section>
             </div>
-            <div id="map"></div>
         </main>
         <footer>
             <p>©ILE</p>
         </footer>
         <div class="leima hide">
-            <h2>Sait leiman</h2>
+            <h2>Gooool</h2>
             <p>
-                <img src="http://openweathermap.org/img/wn/13d@2x.png" alt="leima">
-                <br>
-                Lumisade
+                <span id="goal-txt">Goals reached</span>
             </p>
         </div>
     </div>
