@@ -1,5 +1,13 @@
 'use strict';
-const player = prompt('Player name');
+let player = 'no name';
+const playerForm = document.getElementById('player-form');
+playerForm.addEventListener('submit', function (evt) {
+  evt.preventDefault();
+  player = document.getElementById('player-name').value;
+  document.getElementById('player-modal').classList.add('hide');
+  init();
+});
+
 // Käytetään leaflet.js -kirjastoa näyttämään sijainti kartalla (https://leafletjs.com/)
 const map = L.map('map', { tap: false });
 L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
@@ -55,8 +63,11 @@ async function init(url = `newgame?player=${player}&loc=EFHK`) {
   const gameData = await haeKentat(url);
   if (gameData.status.co2.budget <= 0) {
     alert('game over');
+    return;
   }
-  document.querySelector('#player').innerHTML = gameData.status.name;
+  document.querySelector(
+    '#player'
+  ).innerHTML = `Player: ${gameData.status.name}`;
   document.querySelector('#consumed').innerHTML = gameData.status.co2.consumed;
   document.querySelector('#budget').innerHTML = gameData.status.co2.budget;
   for (let kentta of gameData.location) {
@@ -66,7 +77,7 @@ async function init(url = `newgame?player=${player}&loc=EFHK`) {
       marker.setIcon(vihreaIkoni);
       currentAirport = kentta;
       map.flyTo([kentta.latitude, kentta.longitude], 10);
-      marker.bindPopup(`Olet täällä: ${kentta.name}`).openPopup();
+      marker.bindPopup(`You are here: ${kentta.name}`).openPopup();
       console.log(document.querySelector('#selected-name'));
       naytaSaatiedot(kentta);
       kentta.start = false;
@@ -117,5 +128,3 @@ async function init(url = `newgame?player=${player}&loc=EFHK`) {
 document.querySelector('.leima').addEventListener('click', function () {
   this.classList.toggle('hide');
 });
-
-init();

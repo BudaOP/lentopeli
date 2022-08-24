@@ -14,18 +14,42 @@
     <div class="container">
         <header>
             <div class="logo">
-                <ion-icon name="airplane-outline"></ion-icon>
+                <a href="index.html" class="active">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                    &nbsp;
+                    Game
+                </a>
             </div>
             <h1>
                 Top Gun
             </h1>
             <div class="logo">
-                <ion-icon name="airplane-outline"></ion-icon>
+                <a href="about.html">
+                    <ion-icon name="airplane-outline"></ion-icon>
+                    &nbsp;
+                    About
+                </a>
             </div>
         </header>
         <main>
             <div id="map"></div>
             <div class="boxes">
+                <section class="box">
+                    <header>
+                        <h2>Game status</h2>
+                    </header>
+                    <table id="status">
+                        <tr>
+                            <td colspan="2">
+                                <h3 id="player">Name</h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CO2 Consumed : <span id="consumed">0</span>kg</td>
+                            <td>CO2 Budget: <span id="budget">10000</span>kg</td>
+                        </tr>
+                    </table>
+                </section>
                 <section class="box">
                     <header>
                         <h2 id="selected-name"></h2>
@@ -42,22 +66,6 @@
                             <td id="selected-temp"></td>
                             <td id="selected-weather"></td>
                             <td id="selected-wind"></td>
-                        </tr>
-                    </table>
-                </section>
-                <section class="box">
-                    <header>
-                        <h2>Game status</h2>
-                    </header>
-                    <table id="status">
-                        <tr>
-                            <td colspan="2">
-                                <h3 id="player">Name</h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>CO2 Consumed : <span id="consumed">0</span>kg</td>
-                            <td>CO2 Budget: <span id="budget">10000</span>kg</td>
                         </tr>
                     </table>
                 </section>
@@ -80,6 +88,12 @@
                 <span id="goal-txt">Goals reached</span>
             </p>
         </div>
+    </div>
+    <div id="player-modal">
+        <form id="player-form">
+            <input id="player-name" type="text" placeholder="Player name" required>
+            <input type="submit" value="Start game">
+        </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.esm.js"></script>
