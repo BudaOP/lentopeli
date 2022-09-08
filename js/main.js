@@ -1,9 +1,9 @@
 'use strict';
-let player = 'no name';
+let playerName = 'no name';
 const playerForm = document.getElementById('player-form');
 playerForm.addEventListener('submit', function (evt) {
   evt.preventDefault();
-  player = document.getElementById('player-name').value;
+  playerName = document.getElementById('player-input').value;
   document.getElementById('player-modal').classList.add('hide');
   init();
 });
@@ -21,9 +21,9 @@ let airportMarkers = L.featureGroup().addTo(map);
 const goals = [];
 
 // ikonit
-const sininenIkoni = L.divIcon({ className: 'sininen-ikoni' });
-const vihreaIkoni = L.divIcon({ className: 'vihrea-ikoni' });
-const harmaaIkoni = L.divIcon({ className: 'harmaa-ikoni' });
+const blueIcon = L.divIcon({ className: 'blue-icon' });
+const greenIcon = L.divIcon({ className: 'green-icon' });
+const greyIcon = L.divIcon({ className: 'grey-icon' });
 
 async function haeKentat(url) {
   const vastaus = await fetch('http://127.0.0.1:5000/' + url);
@@ -37,13 +37,13 @@ function lisaaMarker(kentta) {
 
 function naytaSaatiedot(kentta) {
   const { name, weather } = kentta;
-  document.querySelector('#selected-name').innerHTML = `Weather at ${name}`;
-  document.querySelector('#selected-temp').innerHTML = `${weather.temp}°C`;
-  document.querySelector('#selected-icon').src = weather.icon;
+  document.querySelector('#airport-name').innerHTML = `Weather at ${name}`;
+  document.querySelector('#airport-temp').innerHTML = `${weather.temp}°C`;
+  document.querySelector('#weather-icon').src = weather.icon;
   document.querySelector(
-    '#selected-wind'
+    '#airport-wind'
   ).innerHTML = `${weather.wind.speed}m/s`;
-  document.querySelector('#selected-weather').innerHTML = weather.description;
+  document.querySelector('#airport-conditions').innerHTML = weather.description;
   if (weather.meets_goals.length > 0) {
     let splash = false;
     for (let goal of weather.meets_goals) {
@@ -52,13 +52,13 @@ function naytaSaatiedot(kentta) {
       }
     }
     if (splash) {
-      document.querySelector('.leima').classList.toggle('hide');
+      document.querySelector('.goal').classList.toggle('hide');
       location.href = '#goals';
     }
   }
 }
 
-async function init(url = `newgame?player=${player}&loc=EFHK`) {
+async function init(url = `newgame?player=${playerName}&loc=EFHK`) {
   airportMarkers.clearLayers();
   const gameData = await haeKentat(url);
   if (gameData.status.co2.budget <= 0) {
@@ -66,7 +66,7 @@ async function init(url = `newgame?player=${player}&loc=EFHK`) {
     return;
   }
   document.querySelector(
-    '#player'
+    '#player-name'
   ).innerHTML = `Player: ${gameData.status.name}`;
   document.querySelector('#consumed').innerHTML = gameData.status.co2.consumed;
   document.querySelector('#budget').innerHTML = gameData.status.co2.budget;
@@ -74,15 +74,15 @@ async function init(url = `newgame?player=${player}&loc=EFHK`) {
     const marker = lisaaMarker(kentta);
     airportMarkers.addLayer(marker);
     if (kentta.active) {
-      marker.setIcon(vihreaIkoni);
+      marker.setIcon(greenIcon);
       currentAirport = kentta;
       map.flyTo([kentta.latitude, kentta.longitude], 10);
       marker.bindPopup(`You are here: ${kentta.name}`).openPopup();
-      console.log(document.querySelector('#selected-name'));
+      console.log(document.querySelector('#airport-name'));
       naytaSaatiedot(kentta);
       kentta.start = false;
     } else {
-      marker.setIcon(sininenIkoni);
+      marker.setIcon(blueIcon);
       const popupContent = document.createElement('div');
       const h4 = document.createElement('h4');
       h4.innerHTML = kentta.name;
@@ -125,6 +125,6 @@ async function init(url = `newgame?player=${player}&loc=EFHK`) {
   map.invalidateSize(true);
 }
 
-document.querySelector('.leima').addEventListener('click', function () {
+document.querySelector('.goal').addEventListener('click', function () {
   this.classList.toggle('hide');
 });

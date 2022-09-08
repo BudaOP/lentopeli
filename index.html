@@ -5,84 +5,135 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lentopeli</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+        integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+        crossorigin="" />
     <link href="css/main.css" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+        crossorigin="" defer></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.esm.js" defer></script>
+    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <title>Top Gun</title>
 </head>
 
 <body>
     <div class="container">
-        <header>
-            <div class="logo">
-                <a href="index.html" class="active">
-                    <ion-icon name="airplane-outline"></ion-icon>
-                    &nbsp;
-                    Game
-                </a>
-            </div>
-            <h1>
-                Top Gun
+        <header class="page-header">
+            <h1 class="page-title">
+                <ion-icon name="airplane-outline"></ion-icon>&nbsp;Top Gun&nbsp;<ion-icon name="airplane-outline">
+                </ion-icon>
             </h1>
-            <div class="logo">
-                <a href="about.html">
-                    <ion-icon name="airplane-outline"></ion-icon>
-                    &nbsp;
-                    About
-                </a>
-            </div>
+            <ul class="flex-wrap space-evenly">
+                <li>
+                    <a href="index.html" class="button button-white">Game</a>
+                </li>
+                <li>
+                    <a href="about.html" class="button button-white">About</a>
+                </li>
+            </ul>
         </header>
-        <main>
-            <div id="map"></div>
+        <main class="flex-wrap">
+            <div id="map">
+            </div>
             <div class="boxes">
                 <section class="box">
                     <header>
-                        <h2>Game status</h2>
+                        <h2>Game Status</h2>
                     </header>
                     <table id="status">
                         <tr>
                             <td colspan="2">
-                                <h3 id="player">Name</h3>
+                                <h3 id="player-name">Player Name</h3>
                             </td>
-                        </tr>
                         <tr>
-                            <td>CO2 Consumed : <span id="consumed">0</span>kg</td>
-                            <td>CO2 Budget: <span id="budget">10000</span>kg</td>
+                            <td>CO2 Consumed: <span id="consumed">0</span>kg</td>
+                            <td>CO2 Budget: <span id="budget">10000kg</span></td>
                         </tr>
                     </table>
                 </section>
                 <section class="box">
                     <header>
-                        <h2 id="selected-name"></h2>
+                        <h2 id="airport-name">Airport name</h2>
                     </header>
                     <table id="weather">
                         <tr>
                             <td>Temperature</td>
                             <td>
-                                <img id="selected-icon" src="" alt="">
+                                <img id="weather-icon" src="http://openweathermap.org/img/wn/10d@2x.png"
+                                    alt="weather icon">
                             </td>
                             <td>Wind</td>
                         </tr>
                         <tr>
-                            <td id="selected-temp"></td>
-                            <td id="selected-weather"></td>
-                            <td id="selected-wind"></td>
+                            <td id="airport-temp">10°C</td>
+                            <td id="airport-conditions">Conditions</td>
+                            <td id="airport-wind">2 m/s</td>
                         </tr>
                     </table>
                 </section>
                 <section class="box">
                     <header>
                         <h2>Goals</h2>
+                        <ul id="goals" class="flex-wrap space-evenly">
+                            <li>
+                                <figure>
+                                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="goal name">
+                                    <figcaption>Temperature over +25C</figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="goal name">
+                                    <figcaption>Temperature over +25C</figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="goal name">
+                                    <figcaption>Temperature over +25C</figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="goal name">
+                                    <figcaption>Temperature over +25C</figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="goal name">
+                                    <figcaption>Temperature over +25C</figcaption>
+                                </figure>
+                            </li>
+                            <li class="done">
+                                <figure>
+                                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="goal name">
+                                    <figcaption>Temperature over +25C</figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="goal name">
+                                    <figcaption>Temperature over +25C</figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="goal name">
+                                    <figcaption>Temperature over +25C</figcaption>
+                                </figure>
+                            </li>
+                        </ul>
                     </header>
-                    <ul id="goals">
-
-                    </ul>
                 </section>
             </div>
         </main>
-        <footer>
+        <footer class="page-footer">
             <p>©ILE</p>
         </footer>
-        <div class="leima hide">
+        <div class="goal hide">
             <h2>Gooool</h2>
             <p>
                 <span id="goal-txt">Goals reached</span>
@@ -91,14 +142,10 @@
     </div>
     <div id="player-modal">
         <form id="player-form">
-            <input id="player-name" type="text" placeholder="Player name" required>
+            <input id="player-input" type="text" placeholder="Player name" required>
             <input type="submit" value="Start game">
         </form>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons/dist/ionicons/ionicons.js"></script>
-    <script src="js/main.js"></script>
 </body>
 
 </html>
