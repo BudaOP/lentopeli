@@ -1,3 +1,4 @@
+/* variables */
 :root {
   --black: rgb(23, 23, 23);
   --white: rgb(248, 246, 246);
@@ -5,12 +6,13 @@
   --dark-grey: rgb(57, 57, 57);
 }
 
-/* utilities */
+/* utilites */
 .button {
   display: block;
   padding: 0.5rem 1rem;
   text-decoration: none;
   border-radius: 4px;
+  text-align: center;
   transition: all 300ms;
 }
 
@@ -19,7 +21,7 @@
   color: var(--black);
 }
 
-.button-white:hover {
+.button:hover {
   transform: scale(1.1);
 }
 
@@ -37,16 +39,15 @@
   height: auto;
 }
 
-.float-left {
-  float: left;
-}
-
 .hide {
   display: none;
 }
 
-/* app specific */
+.float {
+  float: left;
+}
 
+/* app specific */
 html,
 body {
   margin: 0;
@@ -63,15 +64,9 @@ body {
 
 .page-header,
 .page-footer {
-  width: 100%;
   background-color: var(--black);
   color: var(--white);
   padding: 1rem;
-  box-sizing: border-box;
-}
-
-ion-icon {
-  vertical-align: middle;
 }
 
 .page-footer {
@@ -80,14 +75,16 @@ ion-icon {
 
 .page-title {
   margin: 0;
-  width: 100%;
   text-align: center;
+}
+
+ion-icon {
+  vertical-align: middle;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
-  box-sizing: border-box;
 }
 
 main {
@@ -100,30 +97,23 @@ main {
   overflow: hidden;
 }
 
-#map img {
-  width: 100%;
-  object-fit: cover;
-}
-
 .boxes {
   width: 100%;
-  box-sizing: border-box;
-  font-size: x-small;
 }
 
 .box {
   padding: 1rem;
+  font-size: x-small;
 }
 
 #map,
 .box {
   border-radius: 6px;
-  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: rgba(0, 0, 0, 0.3) 3px 3px 10px;
   margin-bottom: 1rem;
 }
 
 .box h2,
-.box h5,
 .box figure {
   margin: 0;
   padding: 0;
@@ -138,13 +128,12 @@ main {
 
 .box li {
   width: calc(50% - 0.6rem);
-  box-sizing: border-box;
   text-align: center;
-  padding: 0.3rem;
-  margin: 0.3rem;
   border: var(--grey) solid 1px;
   border-radius: 4px;
-  overflow-wrap: break-word;
+  box-sizing: border-box;
+  padding: 0.3rem;
+  margin: 0.3rem;
 }
 
 .box img {
@@ -156,12 +145,11 @@ main {
   background-size: contain;
   background-repeat: no-repeat;
   padding: 9rem 7rem;
+  text-align: center;
   position: absolute;
   bottom: 30%;
-  text-align: center;
   filter: drop-shadow(0 0 30px #333);
   transform: rotate(340deg);
-  box-sizing: border-box;
   line-height: 1rem;
   z-index: 999;
 }
@@ -189,7 +177,10 @@ main {
 
 #player-form input {
   padding: 1rem;
-  display: inline-block;
+}
+
+.done {
+  background-color: var(--grey);
 }
 
 #weather {
@@ -202,11 +193,7 @@ main {
 
 #weather td:first-child,
 #weather td:nth-child(2) {
-  border-right: #ccc 1px solid;
-}
-
-.done {
-  background-color: #b1b1b1;
+  border-right: var(--grey) 1px solid;
 }
 
 .lead-img {
@@ -214,36 +201,8 @@ main {
   margin: 0 0 1rem 0;
 }
 
-/* leaflet icons */
-.blue-icon {
-  background: #2474ff;
-  border: 5px solid rgba(255, 255, 255, 0.5);
-  font-weight: bold;
-  text-align: center;
-  border-radius: 50%;
-  line-height: 30px;
-}
-
-.green-icon {
-  background: #27ba35;
-  border: 5px solid rgba(255, 255, 255, 0.5);
-  font-weight: bold;
-  text-align: center;
-  border-radius: 50%;
-  line-height: 30px;
-}
-
-.grey-icon {
-  background: #484848;
-  border: 5px solid rgba(255, 255, 255, 0.5);
-  font-weight: bold;
-  text-align: center;
-  border-radius: 50%;
-  line-height: 30px;
-}
-
 @media screen and (min-width: 769px) {
-  .boxes {
+  .box {
     font-size: initial;
   }
 
@@ -252,18 +211,22 @@ main {
     height: initial;
   }
 
-  #map img {
-    height: 100%;
-    object-fit: cover;
-  }
-
   .boxes {
     width: 60%;
     padding-left: 1rem;
+    box-sizing: border-box;
   }
+}
 
-  .lead-img {
-    width: 50%;
-    margin: 0 1rem 1rem 0;
-  }
+/* Leaflet icons */
+.blue-icon {
+  background-color: #2474ff;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+}
+
+.green-icon {
+  background-color: #27ba35;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.5);
 }
