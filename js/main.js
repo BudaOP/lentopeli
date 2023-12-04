@@ -1,144 +1,134 @@
 'use strict';
-/* 1. show map using Leaflet library. (L comes from the Leaflet library) */
-
-const map = L.map('map', { tap: false });
-L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-  maxZoom: 20,
-  subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
-}).addTo(map);
-map.setView([60, 24], 7);
 
 // global variables
-const apiUrl = 'http://127.0.0.1:5000/';
-const startLoc = 'EFHK';
-const globalGoals = [];
-const airportMarkers = L.featureGroup().addTo(map);
+
+const airportUrl = 'http://127.0.0.1:3000/airportdata';
+const playerUrl = 'http://127.0.0.1:3000/playerdata';
+const apiUrl = 'http://127.0.0.1:3000/';
 
 // icons
-const blueIcon = L.divIcon({ className: 'blue-icon' });
-const greenIcon = L.divIcon({ className: 'green-icon' });
+
+// form for player name
+
+// function to fetch data from API
+async function getData(apiUrl) {//url on perusarvo tiedon hakemiselle myöhemmin
+  const response = await fetch(apiUrl);
+  if (!response.ok) throw new Error("Wrong server input");
+  const data = await response.json();
+  return data;
+}
+
+// KESKEN
+// function to update information status box
+function updateGameInfo(info) {
+  document.querySelector("#player-name").innerHTML = `Player: ${info.name}`;
+  document.querySelector("#saved-toBeSaved").innerHTML = info.Patients.saved-Still_to_be_saved;
+}
+
+// KESKEN
+// function to show info from the airport where you are at the moment
+function uptadeAirportData(location) {
+  document.querySelector("#location").innerHTML = `location at the monment ${location.name}`
+}
+
+
+// KESKEN
+// function to show/update current range
+function updateGameRange_airports(Range) {
+  document.querySelector("#myRange").innerHTML = `My range: ${Range.name}`
+}
+
+
+// KESKEN
+// function to show/update range and airports box
+/*function updateDistances(distance) {
+  document.querySelector("#distance")
+}*/
+
+// function to check if any goals have been reached
+
+// function to update goal data and goal table in UI
+
+// function to check if game is over
+
+// function to set up game
+
+//  function gameSetup(screenName) {
+//     try {
+//         const response = fetch(`${apiUrl}newgame?player=${screenName}`);
+//         const gameData = response.json();
+//     } catch (error) {
+//         console.log(error)}
+// };
+//
+// gameSetup(playerName);
 
 // form for player name
 document.querySelector('#player-form').addEventListener('submit', function (evt) {
   evt.preventDefault();
   const playerName = document.querySelector('#player-input').value;
   document.querySelector('#player-modal').classList.add('hide');
-  gameSetup(`${apiUrl}newgame?player=${playerName}&loc=${startLoc}`);
+  gameSetup(`${apiUrl}newgame?player=${playerName}`);
+
+  console.log(playerName);
 });
 
-// function to fetch data from API
-async function getData(url) {
-  const response = await fetch(url);
-  if (!response.ok) throw new Error('Invalid server input!');
-  const data = await response.json();
-  return data;
-}
 
-// function to update game status
-function updateStatus(status) {
-  document.querySelector('#player-name').innerHTML = `Player: ${status.name}`;
-  document.querySelector('#consumed').innerHTML = status.co2.consumed;
-  document.querySelector('#budget').innerHTML = status.co2.budget;
-}
+/* LEAFLET */
 
-// function to show weather at selected airport
-function showWeather(airport) {
-  document.querySelector('#airport-name').innerHTML = `Weather at ${airport.name}`;
-  document.querySelector('#airport-temp').innerHTML = `${airport.weather.temp}°C`;
-  document.querySelector('#weather-icon').src = airport.weather.icon;
-  document.querySelector('#airport-conditions').innerHTML = airport.weather.description;
-  document.querySelector('#airport-wind').innerHTML = `${airport.weather.wind.speed}m/s`;
-}
+/* Map setup */
 
-// function to check if any goals have been reached
-function checkGoals(meets_goals) {
-  if (meets_goals.length > 0) {
-    for (let goal of meets_goals) {
-      if (!globalGoals.includes(goal)) {
-        document.querySelector('.goal').classList.remove('hide');
-        location.href = '#goals';
-      }
-    }
-  }
-}
+const map = L.map('map', {
+  tap: false,
+  minZoom: 4, /* min and max zoom degree */
+  maxZoom: 6
+});
 
-// function to update goal data and goal table in UI
-function updateGoals(goals) {
-  document.querySelector('#goals').innerHTML = '';
-  for (let goal of goals) {
-    const li = document.createElement('li');
-    const figure = document.createElement('figure');
-    const img = document.createElement('img');
-    const figcaption = document.createElement('figcaption');
-    img.src = goal.icon;
-    img.alt = `goal name: ${goal.name}`;
-    figcaption.innerHTML = goal.description;
-    figure.append(img);
-    figure.append(figcaption);
-    li.append(figure);
-    if (goal.reached) {
-      li.classList.add('done');
-      globalGoals.includes(goal.goalid) || globalGoals.push(goal.goalid);
-    }
-    document.querySelector('#goals').append(li);
-  }
-}
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
-// function to check if game is over
-function checkGameOver(budget) {
-  if (budget <= 0) {
-    alert(`Game Over. ${globalGoals.length} goals reached.`);
-    return false;
-  }
-  return true;
-}
+map.setView([63.419894, 10.385954], 4); /* default coordinates - home hospital */
 
-// function to set up game
-// this is the main function that creates the game and calls the other functions
-async function gameSetup(url) {
+map.setMaxBounds([ /* disables user from scrolling all over map */
+    [59.408763, 5.279548],
+    [69.683925, 18.984699]
+]);
+
+/* Function to create markers for map */
+
+async function leafletSetup() {
   try {
-    document.querySelector('.goal').classList.add('hide');
-    airportMarkers.clearLayers();
-    const gameData = await getData(url);
+    const gameData = await getData(airportUrl);
     console.log(gameData);
-    updateStatus(gameData.status);
-    if (!checkGameOver(gameData.status.co2.budget)) return;
-    for (let airport of gameData.location) {
-      const marker = L.marker([airport.latitude, airport.longitude]).addTo(map);
-      airportMarkers.addLayer(marker);
-      if (airport.active) {
-        map.flyTo([airport.latitude, airport.longitude], 10);
-        showWeather(airport);
-        checkGoals(airport.weather.meets_goals);
-        marker.bindPopup(`You are here: <b>${airport.name}</b>`);
-        marker.openPopup();
-        marker.setIcon(greenIcon);
-      } else {
-        marker.setIcon(blueIcon);
-        const popupContent = document.createElement('div');
-        const h4 = document.createElement('h4');
-        h4.innerHTML = airport.name;
-        popupContent.append(h4);
-        const goButton = document.createElement('button');
-        goButton.classList.add('button');
-        goButton.innerHTML = 'Fly here';
-        popupContent.append(goButton);
-        const p = document.createElement('p');
-        p.innerHTML = `Distance ${airport.distance}km`;
-        popupContent.append(p);
-        marker.bindPopup(popupContent);
-        goButton.addEventListener('click', function () {
-          gameSetup(`${apiUrl}flyto?game=${gameData.status.id}&dest=${airport.ident}&consumption=${airport.co2_consumption}`);
-        });
-      }
+
+    for (let airport of gameData) {
+      const marker = L.marker([airport.latitude_deg, airport.longitude_deg]).addTo(map);
+      marker.bindPopup(`|`);
     }
-    updateGoals(gameData.goals);
   } catch (error) {
     console.log(error);
   }
 }
 
+// KESKEN
+//Ottaa kiinni mahdollisesti virheelliset inputit API:in liittyen
+// async function gameSetup(){
+//   try {
+//       const gameData = await getData(airportUrl);
+//       console.log(gameData);
+//       updateGameInfo(gameData.info);
+//       updateGameRange_airports(gameData.range);
+//       uptadeAirportData(gameData.location);
+//   } catch (error) {
+//     console.log(error);
+//   }
+
+  /* calls function to setup map */
+  leafletSetup();
+
+
+gameSetup();
+// this is the main function that creates the game and calls the other functions
+
 // event listener to hide goal splash
-document.querySelector('.goal').addEventListener('click', function (evt) {
-  evt.currentTarget.classList.add('hide');
-});
